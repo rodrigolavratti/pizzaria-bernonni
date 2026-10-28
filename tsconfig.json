@@ -22,7 +22,8 @@
       "@/*": ["./*"],
       "@constants": ["./app/constants/index.ts"],
       "@components/*": ["./app/components/*"],
-      "@types": ["./app/types/index.ts"]
+      "@types": ["./app/types/index.ts"],
+      "@context": ["./app/context/index.ts"]
     }
   },
   "include": [

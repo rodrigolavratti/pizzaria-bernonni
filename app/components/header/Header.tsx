@@ -1,6 +1,11 @@
+"use client";
+
+import { useAuth } from "@/app/context/AuthContext";
 import Image from "next/image";
 
 export default function Header() {
+  const { openSidebar, user } = useAuth();
+
   return (
     <section
       className="relative h-[800px] flex items-center justify-center bg-cover bg-center"
@@ -24,9 +29,11 @@ export default function Header() {
         <nav aria-label="Navegação Principal">
           <button
             type="button"
+            onClick={openSidebar}
             aria-label="Abrir Menu"
-            className="p-2 text-white transition-colors hover:text-neutral-300"
+            className="flex items-center gap-2 p-2 text-white transition-colors hover:text-neutral-300 bg-black/40 hover:bg-black/60 rounded-full px-4"
           >
+            {/* Ícone de Usuário/Menu */}
             <svg
               className="h-6 w-6"
               fill="none"
@@ -40,6 +47,16 @@ export default function Header() {
                 d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
+            {/* Se logado, mostra o nome do usuário */}
+            {user ? (
+              <span className="text-sm font-medium max-w-[120px] truncate">
+                {user.name}
+              </span>
+            ) : (
+              <span className="text-sm font-medium hidden sm:inline">
+                Entrar
+              </span>
+            )}
           </button>
         </nav>
       </header>

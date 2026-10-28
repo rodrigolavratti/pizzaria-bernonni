@@ -1,3 +1,4 @@
+import AddToCartButton from "@/app/components/menu-pizzas/add-to-cart-button/AddToCartButton";
 import { pizzas } from "@/app/constants";
 import Image from "next/image";
 
@@ -35,12 +36,7 @@ export default function MenuSection() {
                     <span className="text-lg font-bold text-red-600">
                       R$ {pizza.preco.toFixed(2).replace(".", ",")}
                     </span>
-                    <button
-                      type="button"
-                      className="rounded bg-red-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-700"
-                    >
-                      Adicionar ao carrinho
-                    </button>
+                    <AddToCartButton />
                   </div>
                 </div>
               </article>
