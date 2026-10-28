@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useAuth } from "@/app/context";
 
 export default function LoginModal() {
-  const { isAuthModalOpen, closeAuthModal, authMode, login } = useAuth();
+  const { isAuthModalOpen, closeAuthModal, authMode, login, register } =
+    useAuth();
   const [mode, setMode] = useState<"login" | "register">(authMode);
 
   const [email, setEmail] = useState("");
@@ -13,10 +14,21 @@ export default function LoginModal() {
 
   if (!isAuthModalOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Aqui você integrará com sua API de backend
-    login({ name: name || email.split("@")[0], email });
+
+    try {
+      if (mode === "register") {
+        await register(name.trim(), email.trim(), password);
+      } else {
+        await login(email.trim(), password);
+      }
+    } catch (error) {
+      console.error("Erro ao autenticar:", error);
+      window.alert(
+        "Não foi possível autenticar. Confira os dados e tente novamente.",
+      );
+    }
   };
 
   return (

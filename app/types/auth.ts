@@ -12,6 +12,8 @@ export interface AuthContextType {
   closeSidebar: () => void;
   openAuthModal: (mode?: "login" | "register") => void;
   closeAuthModal: () => void;
-  login: (userData: User) => void;
-  logout: () => void;
+  isAuthReady: boolean;
+  login: (email: string, password: string) => Promise<void>;
+  register: (name: string, email: string, password: string) => Promise<void>;
+  logout: () => Promise<void>;
 }
