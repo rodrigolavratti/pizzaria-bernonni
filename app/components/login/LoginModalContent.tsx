@@ -30,7 +30,12 @@ export default function LoginModalContent() {
         : emailInputRef.current?.validity.typeMismatch
           ? "Informe um e-mail válido."
           : "",
-      password: !password ? "Preencha sua senha." : "",
+      password: !password
+        ? "Preencha sua senha."
+        : mode === "register" &&
+            !/^(?=.*\p{Lu})(?=.*[^\p{L}\p{N}\s]).{6,}$/u.test(password)
+          ? "A senha deve ter pelo menos 6 caracteres, uma letra maiúscula e um caractere especial."
+          : "",
     };
     setFieldErrors(errors);
 
@@ -167,6 +172,12 @@ export default function LoginModalContent() {
               placeholder="••••••••"
               className="w-full px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-lg focus:outline-none focus:border-red-500"
             />
+            {mode === "register" && !fieldErrors.password && (
+              <p className="mt-1 text-sm text-neutral-400">
+                A senha deve conter mínimo de 6 caracteres, incluindo uma letra
+                maiúscula e um caractere especial.
+              </p>
+            )}
             {fieldErrors.password && (
               <p id="password-error" className="mt-1 text-sm text-red-400">
                 {fieldErrors.password}

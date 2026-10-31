@@ -1,3 +1,4 @@
+import { depoimentos } from "@/app/constants";
 import Image from "next/image";
 
 export default function Depoimentos() {
@@ -26,47 +27,18 @@ export default function Depoimentos() {
         </figure>
 
         <ul className="space-y-8">
-          <li>
-            <figure>
-              <blockquote className="text-black italic text-sm md:text-base border-l-4 border-red-600 pl-4 py-1">
-                <p>
-                  Proin sed libero enim sed faucibus turpis. At imperdiet dui
-                  accumsan sit amet nulla facilisi morbi tempus.
-                </p>
-              </blockquote>
-              <figcaption className="mt-2 font-bold text-black text-sm">
-                — <cite className="not-italic">Célia Almeida</cite>
-              </figcaption>
-            </figure>
-          </li>
-
-          <li>
-            <figure>
-              <blockquote className="text-black italic text-sm md:text-base border-l-4 border-red-600 pl-4 py-1">
-                <p>
-                  Proin sed libero enim sed faucibus turpis. At imperdiet dui
-                  accumsan sit amet nulla facilisi morbi tempus.
-                </p>
-              </blockquote>
-              <figcaption className="mt-2 font-bold text-black text-sm">
-                — <cite className="not-italic">Frank Kinney</cite>
-              </figcaption>
-            </figure>
-          </li>
-
-          <li>
-            <figure>
-              <blockquote className="text-black italic text-sm md:text-base border-l-4 border-red-600 pl-4 py-1">
-                <p>
-                  Proin sed libero enim sed faucibus turpis. At imperdiet dui
-                  accumsan sit amet nulla facilisi morbi tempus.
-                </p>
-              </blockquote>
-              <figcaption className="mt-2 font-bold text-black text-sm">
-                — <cite className="not-italic">Phoebe Nelson</cite>
-              </figcaption>
-            </figure>
-          </li>
+          {depoimentos.map((depoimento) => (
+            <li key={depoimento.id}>
+              <figure>
+                <blockquote className="text-black italic text-sm md:text-base border-l-4 border-red-600 pl-4 py-1">
+                  <p>{depoimento.description}</p>
+                </blockquote>
+                <figcaption className="mt-2 font-bold text-black text-sm">
+                  — <cite className="not-italic">{depoimento.namePerson}</cite>
+                </figcaption>
+              </figure>
+            </li>
+          ))}
         </ul>
       </div>
     </section>
