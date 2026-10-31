@@ -17,13 +17,13 @@ import {
 
 export default function Contato() {
   const [isMapOpen, setIsMapOpen] = useState(false);
+  const [currentGroup, setCurrentGroup] = useState<string | null>(null);
   const mapButtonRef = useRef<HTMLButtonElement>(null);
   const [status, setStatus] = useState({
     isOpen: false,
     message: "Carregando...",
   });
 
-  const currentGroup = getCurrentDayGroup();
   const address = "Rua das Pizzas, 123 — Bairro Nobre, São Paulo, SP";
   const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}`;
   const embeddedMapUrl = `${mapUrl}&output=embed`;
@@ -31,6 +31,7 @@ export default function Contato() {
   useEffect(() => {
     const updateStatus = () => {
       setStatus(checkIsPizzeriaOpen());
+      setCurrentGroup(getCurrentDayGroup());
     };
 
     updateStatus();

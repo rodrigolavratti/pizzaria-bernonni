@@ -50,11 +50,13 @@ export function checkIsPizzeriaOpen(): BusinessHours {
   };
 }
 
-export function getCurrentDayGroup(): "tue-thu" | "fri-sat" | "sun" | "mon" {
-  const day = new Date().getDay(); // 0 = Dom, 1 = Seg, 2 = Ter, 3 = Qua, 4 = Qui, 5 = Sex, 6 = Sáb
+export function getCurrentDayGroup(
+  date: Date = new Date(),
+): "tue-thu" | "fri-sat" | "sun" | "mon" {
+  const day = date.getDay(); // 0 = Dom, 1 = Seg, 2 = Ter, 3 = Qua, 4 = Qui, 5 = Sex, 6 = Sáb
 
   if (day === 1) return "mon";
   if (day === 5 || day === 6) return "fri-sat";
   if (day === 0) return "sun";
-  return "tue-thu"; // 2, 3, 4 (Terça a Quinta)
+  return "tue-thu";
 }
