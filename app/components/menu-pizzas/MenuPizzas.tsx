@@ -33,7 +33,7 @@ export default function MenuSection() {
                   </div>
 
                   <div className="flex items-center justify-between border-t border-neutral-100 pt-4">
-                    <span className="text-lg font-bold text-red-600">
+                    <span className="text-2xl font-bold text-black-900">
                       R$ {pizza.preco.toFixed(2).replace(".", ",")}
                     </span>
                     <AddToCartButton />

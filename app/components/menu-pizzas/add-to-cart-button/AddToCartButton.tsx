@@ -18,7 +18,7 @@ export default function AddToCartButton() {
       <button
         onClick={handleClick}
         type="button"
-        className="rounded bg-red-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-700"
+        className="bg-red-700 hover:bg-red-800 text-white text-sm font-semibold px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap"
       >
         Adicionar ao carrinho
       </button>

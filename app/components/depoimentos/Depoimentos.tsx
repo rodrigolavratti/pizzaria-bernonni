@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function Testemunhos() {
+export default function Depoimentos() {
   return (
     <section
       className="py-6 px-6 max-w-7xl mx-auto"
@@ -8,9 +8,9 @@ export default function Testemunhos() {
     >
       <h2
         id="testimonials-title"
-        className="text-black text-3xl font-bold mb-12"
+        className="text-black text-3xl font-bold mb-8"
       >
-        Testemunhos
+        Depoimentos
       </h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
