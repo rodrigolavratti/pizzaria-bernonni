@@ -14,6 +14,7 @@ import {
   checkIsPizzeriaOpen,
   getCurrentDayGroup,
 } from "@/app/components/contato/utils/time-open";
+import { AddressMap } from "@/app/constants/address-map";
 
 export default function Contato() {
   const [isMapOpen, setIsMapOpen] = useState(false);
@@ -24,7 +25,7 @@ export default function Contato() {
     message: "Carregando...",
   });
 
-  const address = "Rua das Pizzas, 123 — Bairro Nobre, São Paulo, SP";
+  const address = AddressMap.addressMap;
   const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}`;
   const embeddedMapUrl = `${mapUrl}&output=embed`;
 
